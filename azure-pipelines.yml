@@ -9,6 +9,7 @@ steps:
 - task: NodeTaskRunnerInstaller@0
   inputs:
     nodeVersion: '16'
+  displayName: 'Instalar o Node.js'
 
 - script: npm install -g yarn
   displayName: 'instalação do Yarn'
@@ -19,7 +20,14 @@ steps:
 - script: yarn playwright install
   displayName: 'Instalando o playwright'
 
-
 - script: yarn run e2e
   displayName: 'Executando testes e2e'
 
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/TEST-*.xml'
+    failTaskOnFailedTests: true
+    failTaskOnFailureToPublishResults: true
+    failTaskOnMissingResultsFile: true
+    testRunTitle: 'Executando os testes no Azure'
