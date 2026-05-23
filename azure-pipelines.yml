@@ -25,9 +25,6 @@ steps:
 
 - task: PublishTestResults@2
   inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/TEST-*.xml'
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'
     failTaskOnFailedTests: true
-    failTaskOnFailureToPublishResults: true
-    failTaskOnMissingResultsFile: true
-    testRunTitle: 'Executando os testes no Azure'
