@@ -6,15 +6,20 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 - task: NodeTaskRunnerInstaller@0
   inputs:
     nodeVersion: '16'
+
 - script: npm install -g yarn
   displayName: 'instalação do Yarn'
+
 - script: yarn
   displayName: 'Instalando dependências'
+
+- script: yarn playwright install
+  displayName: 'Instalando o playwright'
+
+
 - script: yarn run e2e
   displayName: 'Executando testes e2e'
 
