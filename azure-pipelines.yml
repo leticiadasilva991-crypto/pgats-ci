@@ -5,26 +5,28 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: NodeTaskRunnerInstaller@0
-  inputs:
-    nodeVersion: '16'
-  displayName: 'Instalar o Node.js'
+stages:
+- stage: AutomatedTesting
+  displayName: 'Testes Automatizados'
+  
+  jobs:
+  - job: Execution_Pipeline
+    displayName: 'Validação do Pipeline de Testes'
 
-- script: npm install -g yarn
-  displayName: 'instalação do Yarn'
+    steps:
+    - task: NodeTaskRunnerInstaller@0
+      inputs:
+        nodeVersion: '16'
+      displayName: 'Instalar o Node.js'
 
-- script: yarn
-  displayName: 'Instalando dependências'
+    - script: npm install -g yarn
+      displayName: 'instalação do Yarn'
 
-- script: yarn playwright install
-  displayName: 'Instalando o playwright'
+    - script: yarn
+      displayName: 'Instalando dependências'
 
-- script: yarn run e2e
-  displayName: 'Executando testes e2e'
+    - script: yarn playwright install
+      displayName: 'Instalando o playwright'
 
-- task: PublishTestResults@2
-  inputs:
-    testRunner: VSTest
-    testResultsFiles: '**/*.trx'
-    failTaskOnFailedTests: true
+    - script: yarn run e2e
+      displayName: 'Executando testes e2e'
