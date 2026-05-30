@@ -36,7 +36,27 @@
 13. Execute a aplicação com `yarn start`
 14. Acesse a aplicação publicada [neste link](https://pgats-ci-example.netlify.app)
 
----
+--- 
 
-💜⚡️
-# pgats-ci
+⚡️# Desafio da Aula de da Pós-graduação
+
+
+1) Use os conceitos e exemplos praticados em aula e aplique em outra ferramenta de integração Contínua. Sugestões:
+- Azure DevOps
+- CircleCI
+- Gitlab CI
+- Jenkins
+
+2) Explore os plugins disponíveis no Marketplace e escolha um que pode agregar ao fluxo de trabalho como: relatórios, notificações, IA, etc.
+
+3) Leia sobre self-hosted runners/agents. Tente executar os pipelines criados usando um. 
+Avalie: Quando faz sentido usar esse recurso? 
+Outras plataformas oferecem recursos similires? 
+
+***
+
+## Azure DevOps Pipeline
+
+A ferramenta escolhida para este projeto foi o Azure DevOps, com o objetivo de ampliar meus conhecimentos em uma tecnologia que faz parte da stack utilizada no meu trabalho atual. Para configurar a integração contínua, foi criado o arquivo `azure-pipelines.yml` na raiz do projeto, responsável por definir e automatizar o fluxo de execução da pipeline.
+
+
