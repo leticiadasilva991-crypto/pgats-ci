@@ -6,8 +6,8 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-- stage: AutomatedTesting
-  displayName: 'Testes Automatizados'
+- stage: Passo1
+  displayName: 'Instalações Necessárias'
   
   jobs:
   - job: Execution_Pipeline
@@ -28,10 +28,15 @@ stages:
     - script: yarn playwright install
       displayName: 'Instalando o playwright'
 
+- stage: stage2
+  displayName: 'Executando os Testes Automatizados'
+  dependsOn: Passo1
+  jobs:
+  - job:
+    steps:
     - script: yarn run e2e
       displayName: 'Executando testes e2e'
-
-      
+   
     - task: PublishTestResults@2
       inputs:
        testResultsFormat: 'JUnit'
