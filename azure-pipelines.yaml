@@ -30,3 +30,11 @@ stages:
 
     - script: yarn run e2e
       displayName: 'Executando testes e2e'
+
+      
+    - task: PublishTestResults@2
+      inputs:
+       testResultsFormat: 'JUnit'
+       testResultsFiles: '**/TEST-*.xml'
+       searchFolder: '.'
+       testRunTitle: 'teste 1'
