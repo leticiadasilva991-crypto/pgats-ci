@@ -31,16 +31,8 @@ stages:
     - script: yarn run e2e
       displayName: 'Executando testes e2e'
    
-    - task: Bash@3
-      inputs:
-       targetType: 'inline'
-       script: |
-        npx playwright test || true
-      displayName: 'Run E2E Tests'
-      continueOnError: true
     - task: PublishTestResults@2
       inputs:
-        testResultsFormat: 'JUnit'
-        testResultsFiles: 'results/*.xml'
-        failTaskOnFailedTests: false
+       testResultsFormat: 'JUnit'
+       testResultsFiles: '**/results-*.xml'
       condition: always()
