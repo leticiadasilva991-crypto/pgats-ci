@@ -48,5 +48,19 @@ stages:
         $username = 'Leticia QA'
         $title = 'Uma nova atualização em produção foi feita!'
         $description = 'As novas features já estão disponíveis para os usuários'
+        $embedFieldObject = [PSCustomObject]@{
+        name = 'Ambiente'
+        value = 'Produção' }
+        $embedFieldArray.Add($embedFieldObject)
+        $embedObject = [PSCustomObject]@{
+        color = $color
+        title = $title
+        fields = $embedFieldArray
+        description = $description}
+        $embedArray.Add($embedObject)
+        $payload = [PSCustomObject]@{
+        embeds = $embedArray
+        content = $content
+        username = $username}
         Invoke-RestMethod -Uri $webHookUrl -UseBasicParsing -Body ($payload | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json; charset=utf-8'
        showWarnings: true
