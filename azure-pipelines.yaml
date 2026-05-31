@@ -25,15 +25,9 @@ stages:
     - script: yarn
       displayName: 'Instalando dependências'
 
-
-- stage: stage2
-  displayName: 'Executando os Testes Automatizados'
-  dependsOn: Passo1
-  jobs:
-  - job:
-    steps:
     - script: yarn playwright install
       displayName: 'Instalando o playwright'
+      
     - script: yarn run e2e
       displayName: 'Executando testes e2e'
    
