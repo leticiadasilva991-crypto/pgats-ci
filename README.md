@@ -58,4 +58,33 @@ Outras plataformas oferecem recursos similires?
 
 A ferramenta escolhida para este projeto foi o Azure DevOps, com o objetivo de ampliar meus conhecimentos em uma tecnologia que faz parte da stack utilizada no meu trabalho atual. Para configurar a integração contínua, foi criado o arquivo `azure-pipelines.yml` na raiz do projeto, responsável por definir e automatizar o fluxo de execução da pipeline.
 
+Na segunda parte do desafio, optei por realizar a instalação do plugin do Allure Reports, que pode ser instalado por meio da documentação oficial [neste link](https://allurereport.org/docs/integrations-azure/]).
 
+Após a execução da pipeline, é possível baixar o arquivo do relatório para visualizá-lo localmente em sua máquina ou acessar os resultados diretamente pelo Azure DevOps, facilitando a análise e o acompanhamento da execução dos testes.
+
+## self-hosted runners/agents
+
+Os Self-Hosted Runners permitem a execução de pipelines de CI/CD em infraestrutura própria, oferecendo maior flexibilidade e controle sobre o ambiente de execução. Com essa abordagem, é possível definir configurações personalizadas de hardware, software, rede e segurança, de acordo com as necessidades do projeto.
+
+#### Principais casos de uso:
+
+* Execução de aplicações que dependem de softwares ou bibliotecas específicas;
+* Acesso a recursos internos da organização, como bancos de dados e serviços restritos;
+* Otimização de desempenho por meio de recursos computacionais dedicados;
+* Execução de testes que exigem infraestrutura especializada;
+* Atendimento a requisitos de segurança, governança e conformidade;
+* Possibilidade de redução de custos operacionais, dependendo do volume de execuções.
+
+#### Plataformas que utilizam self-hosted runners/agents
+
+| Plataforma          | Nome utilizado                 |
+| ------------------- | ------------------------------ |
+| GitHub              | Self-hosted Runners            |
+| Microsoft           | Self-hosted Agents             |
+| GitLab              | GitLab Runners                 |
+| Atlassian           | Self-hosted Runners            |
+| JetBrains           | Build Agents                   |
+| CloudBees / Jenkins | Agents/Nodes                   |
+| CircleCI            | Self-hosted Runners            |
+| Buildkite           | Build Agents                   |
+| Travis CI           | Self-hosted Enterprise Workers |
