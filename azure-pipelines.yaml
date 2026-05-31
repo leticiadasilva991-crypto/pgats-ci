@@ -31,36 +31,13 @@ stages:
     - script: yarn run e2e
       displayName: 'Executando testes e2e'
    
-    - task: PublishTestResults@2
-      inputs:
-       testResultsFormat: 'JUnit'
-       testResultsFiles: '**/TEST-*.xml'
-       searchFolder: '.'
-       testRunTitle: 'teste 1'
-    - task: PowerShell@2
+    - task: Bash@3
       inputs:
        targetType: 'inline'
        script: |
-        [System.Collections.ArrayList] $embedArray = @()
-        [System.Collections.ArrayList] $embedFieldArray =@()
-        $webHookUrl = https://discord.com/api/webhooks/1510444787063460003/UqWe51Ag_TryXkbVEAt39h4_bpjbzFJumJsQ4Fa8clx4z8EjbjctG_tRpvUxZ_hxuXBL7
-        $color = '3113489'
-        $username = 'Leticia QA'
-        $title = 'Uma nova atualização em produção foi feita!'
-        $description = 'As novas features já estão disponíveis para os usuários'
-        $embedFieldObject = [PSCustomObject]@{
-        name = 'Ambiente'
-        value = 'Produção' }
-        $embedFieldArray.Add($embedFieldObject)
-        $embedObject = [PSCustomObject]@{
-        color = $color
-        title = $title
-        fields = $embedFieldArray
-        description = $description}
-        $embedArray.Add($embedObject)
-        $payload = [PSCustomObject]@{
-        embeds = $embedArray
-        content = $content
-        username = $username}
-        Invoke-RestMethod -Uri $webHookUrl -UseBasicParsing -Body ($payload | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json; charset=utf-8'
-       showWarnings: true
+        npm install -g newman
+        npm install -g newman-reporter-htmlextra
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '**/newman-*.xml'
