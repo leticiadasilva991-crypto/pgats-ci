@@ -35,5 +35,5 @@ stages:
     - task: PublishAllureReport@2
       inputs:
         allureVersion: '2.27.0'
-        testResultsDir: 'allure-results'
+        testResultsDir: 'e2e'
         reportName: 'Report'
