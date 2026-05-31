@@ -37,3 +37,16 @@ stages:
        testResultsFiles: '**/TEST-*.xml'
        searchFolder: '.'
        testRunTitle: 'teste 1'
+    - task: PowerShell@2
+      inputs:
+       targetType: 'inline'
+       script: |
+        [System.Collections.ArrayList] $embedArray = @()
+        [System.Collections.ArrayList] $embedFieldArray =@()
+        $webHookUrl = https://discord.com/api/webhooks/1510444787063460003/UqWe51Ag_TryXkbVEAt39h4_bpjbzFJumJsQ4Fa8clx4z8EjbjctG_tRpvUxZ_hxuXBL7
+        $color = '3113489'
+        $username = 'Leticia QA'
+        $title = 'Uma nova atualização em produção foi feita!'
+        $description = 'As novas features já estão disponíveis para os usuários'
+        Invoke-RestMethod -Uri $webHookUrl -UseBasicParsing -Body ($payload | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json; charset=utf-8'
+       showWarnings: true
