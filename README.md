@@ -38,7 +38,7 @@
 
 --- 
 
-⚡️# Desafio da Aula de da Pós-graduação
+# Desafio da Aula de da Pós-graduação
 
 
 1) Use os conceitos e exemplos praticados em aula e aplique em outra ferramenta de integração Contínua. Sugestões:
@@ -53,7 +53,6 @@
 Avalie: Quando faz sentido usar esse recurso? 
 Outras plataformas oferecem recursos similires? 
 
-***
 
 ## Azure DevOps Pipeline
 
