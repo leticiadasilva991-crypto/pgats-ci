@@ -88,3 +88,6 @@ Os Self-Hosted Runners permitem a execução de pipelines de CI/CD em infraestru
 | CircleCI            | Self-hosted Runners            |
 | Buildkite           | Build Agents                   |
 | Travis CI           | Self-hosted Enterprise Workers |
+
+#### Demostração da execução utilizando self-hosted
+<img width="1102" height="595" alt="azure" src="https://github.com/user-attachments/assets/8c1e7163-c53a-4ff5-8ecf-e23fcd237173" />
