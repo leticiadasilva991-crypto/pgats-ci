@@ -1,38 +1,36 @@
-
 trigger:
-- master
+  - master
 
 pool: 'Azure Pipelines (self-hosted)'
 
 stages:
-- stage: Passo1
-  displayName: 'Instalações Necessárias'
-  
-  jobs:
-  - job: Execution_Pipeline
-    displayName: 'Validação do Pipeline de Testes'
+  - stage: Passo1
+    displayName: 'Instalações Necessárias'
 
-    steps:
-    - task: NodeTaskRunnerInstaller@0
-      inputs:
-        nodeVersion: '16'
-      displayName: 'Instalar o Node.js'
+    jobs:
+      - job: Execution_Pipeline
+        displayName: 'Validação do Pipeline de Testes'
 
-    - script: npm install -g yarn
-      displayName: 'instalação do Yarn'
+        steps:
+          - task: NodeTaskRunnerInstaller@0
+            inputs:
+              nodeVersion: '16'
+            displayName: 'Instalar o Node.js'
 
-    - script: yarn
-      displayName: 'Instalando dependências'
+          - script: npm install -g yarn
+            displayName: 'instalação do Yarn'
 
-    - script: yarn playwright install
-      displayName: 'Instalando o playwright'
-      
-    - script: yarn run e2e
-      displayName: 'Executando testes e2e'
-   
+          - script: yarn
+            displayName: 'Instalando dependências'
 
-    - task: PublishAllureReport@2
-      inputs:
-        allureVersion: '2.27.0'
-        testResultsDir: 'allure-results'
-        reportName: 'Report'
+          - script: yarn playwright install
+            displayName: 'Instalando o playwright'
+
+          - script: yarn run e2e
+            displayName: 'Executando testes e2e'
+
+          - task: PublishAllureReport@2
+            inputs:
+              allureVersion: '2.27.0'
+              testResultsDir: 'allure-results'
+              reportName: 'Report'
